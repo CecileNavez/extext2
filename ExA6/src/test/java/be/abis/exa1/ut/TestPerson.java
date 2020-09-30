@@ -17,7 +17,7 @@ public class TestPerson {
 
     @Before
     public void setUp() {
-        Person person = new Person(1, "Cecile", "Navez", LocalDate.of(1978, 5, 16));
+        person = new Person(1, "Cecile", "Navez", LocalDate.of(1978, 5, 16));
     }
     
     @Test
