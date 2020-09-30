@@ -1,6 +1,7 @@
 package be.abis.exa1.ut;
 
 import be.abis.exa1.model.Person;
+import org.junit.Before;
 import org.junit.Test;
 
 import java.time.LocalDate;
@@ -12,11 +13,12 @@ import static org.junit.Assert.assertThat;
 
 public class TestPerson {
 
-    /*private void setUp() {
-        Person person = new Person(1, "Cecile", "Navez", LocalDate.of(1978, 5, 16));
-    }*/
+    private Person person;
 
-    private Person person = new Person(1, "Cecile", "Navez", LocalDate.of(1978, 5, 16));
+    @Before
+    public void setUp() {
+        Person person = new Person(1, "Cecile", "Navez", LocalDate.of(1978, 5, 16));
+    }
     
     @Test
     public void ageOfPersonFromBirthDateShouldBe42() {
