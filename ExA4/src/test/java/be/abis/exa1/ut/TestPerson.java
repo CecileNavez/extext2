@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import java.time.LocalDate;
 
+import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
@@ -19,6 +20,6 @@ public class TestPerson {
 
         //assertEquals(42, personAge);
 
-        assertThat(personAge, is(42));
+        assertThat(personAge, is(equalTo(42)));
         }
 }
