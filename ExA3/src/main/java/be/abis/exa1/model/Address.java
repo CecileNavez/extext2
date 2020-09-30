@@ -66,7 +66,17 @@ public class Address {
         this.countryCode = countryCode;
     }
 
+    public boolean checkBelgianZipCode() {
+        boolean isCorrect=false;
 
+        try {
+            Integer.parseInt(zipCode);
+            isCorrect = true;
+        } catch (NumberFormatException nfe){
+            return isCorrect;
+        }
+        return isCorrect;
+    }
 
 }
 
