@@ -39,9 +39,8 @@ public class TestPerson {
         assertThat(strPerson, startsWith("Person"));
     }
 
-    @Test
+    @Test(expected = PersonShouldBeAdultException.class)
     public void ageOfThePersonShouldBeOver18() throws PersonShouldBeAdultException {
-        int personAge2 = person2.calculateAge();
-        assertTrue(personAge2 < 18);
+        int personAge = person2.calculateAge();
     }
 }

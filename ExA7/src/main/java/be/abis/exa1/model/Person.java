@@ -116,7 +116,7 @@ public class Person {
     public int calculateAge() throws PersonShouldBeAdultException {
         int age = Period.between(birthDate, LocalDate.now()).getYears();
         if (age < 18) {
-            throw new PersonShouldBeAdultException("The person should be an Adult");
+            throw new PersonShouldBeAdultException("The person should be an adult");
         }
         return age;
     }
