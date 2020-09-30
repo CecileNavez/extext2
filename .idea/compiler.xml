@@ -10,6 +10,7 @@
         <module name="ExA4" />
         <module name="ExA3" />
         <module name="ExA2" />
+        <module name="ExA6" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -17,6 +18,7 @@
       <module name="ExA3" target="1.8" />
       <module name="ExA4" target="1.8" />
       <module name="ExA5" target="1.8" />
+      <module name="ExA6" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
