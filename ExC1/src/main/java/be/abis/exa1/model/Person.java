@@ -12,6 +12,7 @@ public class Person {
     private String lastName;
     private LocalDate birthDate;
     private Company company;
+    private double grossSalary;
 
     public Person(int personNumber, String firstName, String lastName, LocalDate birthDate) {
         super();
@@ -19,15 +20,16 @@ public class Person {
         this.firstName = firstName;
         this.lastName = lastName;
         this.birthDate = birthDate;
-    }
+        }
 
-    public Person(int personNumber, String firstName, String lastName, LocalDate birthDate, Company company) {
+    public Person(int personNumber, String firstName, String lastName, LocalDate birthDate, Company company, double grossSalary) {
         super();
         this.personNumber = personNumber;
         this.firstName = firstName;
         this.lastName = lastName;
         this.birthDate = birthDate;
         this.company = company;
+        this.grossSalary = grossSalary;
     }
 
 
@@ -90,6 +92,13 @@ public class Person {
         this.company = company;
     }
 
+    public double getGrossSalary() {
+        return grossSalary;
+    }
+
+    public void setGrossSalary(double grossSalary) {
+        this.grossSalary = grossSalary;
+    }
 
     @Override
     public String toString(){
@@ -103,7 +112,8 @@ public class Person {
 
         String text = "Person " + this.personNumber + " : " + this.firstName + " " + this.lastName + " (" + age + " years old)";
         if (this.company != null) {
-            text += " works for " + this.company.getName() + " in " + this.company.getAddress().getTown() + ".";
+            text += " works for " + this.company.getName() + " in " + this.company.getAddress().getTown() + " (gross salary : "
+                    + this.getGrossSalary() + " - net salary : " + calculateNetSalary() + ").";
         }	else {
 
             text += " is unemployed for the moment.";
@@ -119,6 +129,11 @@ public class Person {
             throw new PersonShouldBeAdultException("The person should be an adult");
         }
         return age;
+    }
+
+    public double calculateNetSalary() {
+        double tax = this.company.calculateTaxToPay();
+        return this.grossSalary * (1-tax/100);
     }
 
    }

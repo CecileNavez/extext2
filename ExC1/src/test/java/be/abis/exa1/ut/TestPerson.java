@@ -1,16 +1,21 @@
 package be.abis.exa1.ut;
 
 import be.abis.exa1.exception.PersonShouldBeAdultException;
+import be.abis.exa1.model.Address;
+import be.abis.exa1.model.Company;
 import be.abis.exa1.model.Person;
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Mock;
 
 import java.time.LocalDate;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.startsWith;
 import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
+import static org.mockito.Mockito.*;
 
 public class TestPerson {
 
@@ -42,4 +47,15 @@ public class TestPerson {
     public void ageOfThePersonShouldBeOver18() throws PersonShouldBeAdultException {
         int personAge = person2.calculateAge();
     }
+
+    @Mock
+    Company mockedCompany;
+
+   @Test
+    public void calculateNetSalaryOfBelgianPersonUsingMockCompany() {
+        person2.setGrossSalary(3000);
+        when(mockedCompany.calculateTaxToPay()).thenReturn(51.0);
+        assertEquals(person2.calculateNetSalary(), 1470.0, 0.01);
+        }
+
 }
