@@ -59,8 +59,11 @@ public class TestPerson {
    @Test
     public void calculateNetSalaryOfBelgianPersonUsingMockCompany() {
         person2.setGrossSalary(3000);
+        person2.setCompany(mockedCompany);
         when(mockedCompany.calculateTaxToPay()).thenReturn(51.0);
         assertEquals(person2.calculateNetSalary(), 1470.0, 0.01);
+
+        verify(mockedCompany, times(1)).calculateTaxToPay();
         }
 
 }
