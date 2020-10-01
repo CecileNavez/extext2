@@ -2,8 +2,8 @@ package be.abis.exa1.ut;
 
 import be.abis.exa1.model.Address;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
+import org.junit.jupiter.api.DynamicTest;
 
 import java.io.File;
 import java.io.IOException;
@@ -25,7 +25,7 @@ public class TestAddress {
         assertTrue(a1.checkBelgianZipCode());
     }
 
-    @Test
+    @DynamicTest
     public void appendingAddressToFileShouldReturnExtraLineInFile() throws IOException {
         Path path = Address.getFilePath();
         int countBeforeWrite=0;
@@ -48,12 +48,6 @@ public class TestAddress {
         }
         file.setReadOnly();
         a1.writeToFile();
-    }
-
-    @Ignore
-    //@Test
-    public void noIdeaYetWhatWeAreGoingToTest() {
-        System.out.println("Test must be ignored");
     }
 
 }

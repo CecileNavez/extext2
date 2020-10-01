@@ -51,7 +51,6 @@ public class TestAddress {
     }
 
     @Ignore
-    @Test
     public void noIdeaYetWhatWeAreGoingToTest() {
         System.out.println("Test must be ignored");
     }
