@@ -3,8 +3,6 @@ package be.abis.exa1.ut;
 import be.abis.exa1.exception.SalaryTooLowException;
 import be.abis.exa1.model.Person;
 import be.abis.exa1.service.AbisPaymentService;
-import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
