@@ -2,6 +2,7 @@ package be.abis.exa1.ut;
 
 import be.abis.exa1.model.Address;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.io.File;
@@ -47,6 +48,12 @@ public class TestAddress {
         }
         file.setReadOnly();
         a1.writeToFile();
+    }
+
+    @Ignore
+    @Test
+    public void noIdeaYetWhatWeAreGoingToTest() {
+        System.out.println("Test must be ignored");
     }
 
 }
