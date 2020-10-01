@@ -20,8 +20,6 @@ public class TestPaymentService {
 
     @Test(expected = SalaryTooLowException.class)
     public void netSalaryOfThePersonShouldBeOver1500() throws SalaryTooLowException {
-        mockedPerson.setFirstName("Cecile");
-        mockedPerson.setGrossSalary(2000.0);
         PaymentService myPay = new AbisPaymentService();
         when(mockedPerson.calculateNetSalary()).thenThrow(new SalaryTooLowException());
         myPay.paySalary(mockedPerson);
