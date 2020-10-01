@@ -6,7 +6,9 @@ import be.abis.exa1.model.Company;
 import be.abis.exa1.model.Person;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.Mock;
+import org.mockito.runners.MockitoJUnitRunner;
 
 import java.time.LocalDate;
 
@@ -17,10 +19,14 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 import static org.mockito.Mockito.*;
 
+@RunWith(MockitoJUnitRunner.class)
 public class TestPerson {
 
     private Person person;
     private Person person2;
+
+    @Mock
+    Company mockedCompany;
 
     @Before
     public void setUp() {
@@ -48,8 +54,7 @@ public class TestPerson {
         int personAge = person2.calculateAge();
     }
 
-    @Mock
-    Company mockedCompany;
+
 
    @Test
     public void calculateNetSalaryOfBelgianPersonUsingMockCompany() {
