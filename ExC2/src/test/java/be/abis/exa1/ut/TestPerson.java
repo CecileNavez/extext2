@@ -1,0 +1,75 @@
+package be.abis.exa1.ut;
+
+import be.abis.exa1.exception.PersonShouldBeAdultException;
+import be.abis.exa1.exception.SalaryTooLowException;
+import be.abis.exa1.model.Company;
+import be.abis.exa1.model.Person;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.runners.MockitoJUnitRunner;
+
+import java.time.LocalDate;
+
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.startsWith;
+import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThat;
+import static org.mockito.Mockito.*;
+
+@RunWith(MockitoJUnitRunner.class)
+public class TestPerson {
+
+    private Person person;
+    private Person person2;
+
+    @Mock
+    Company mockedCompany;
+
+    @Before
+    public void setUp() {
+        person = new Person(1, "Cecile", "Navez", LocalDate.of(1978, 5, 16));
+        person2 = new Person(1, "Nathan", "Dupont", LocalDate.of(2003, 5, 16));
+    }
+    
+
+    @Test
+    public void ageOfPersonFromBirthDateShouldBe42() throws PersonShouldBeAdultException{
+
+        int personAge = person.calculateAge();
+        assertThat(personAge, is(equalTo(42)));
+        }
+
+    @Test
+    public void toStringSentenceStartsWithPerson() {
+
+        String strPerson = person.toString();
+        assertThat(strPerson, startsWith("Person"));
+    }
+
+    @Test(expected = PersonShouldBeAdultException.class)
+    public void ageOfThePersonShouldBeOver18() throws PersonShouldBeAdultException {
+        int personAge = person2.calculateAge();
+    }
+
+   @Test
+    public void calculateNetSalaryOfBelgianPersonUsingMockCompany() throws SalaryTooLowException {
+        person2.setGrossSalary(4000);
+        person2.setCompany(mockedCompany);
+        when(mockedCompany.calculateTaxToPay()).thenReturn(51.0);
+        assertEquals(person2.calculateNetSalary(), 1960.0, 0.01);
+
+        verify(mockedCompany, times(1)).calculateTaxToPay();
+    }
+
+    @Test(expected = SalaryTooLowException.class)
+    public void netSalaryOfThePersonShouldBeOver1500() throws SalaryTooLowException {
+        person2.setGrossSalary(3000);
+        person2.setCompany(mockedCompany);
+        when(mockedCompany.calculateTaxToPay()).thenReturn(51.0);
+        double netSalary = person2.calculateNetSalary();
+    }
+
+}
