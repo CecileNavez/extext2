@@ -6,10 +6,8 @@ import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
 @SuiteClasses({
-        TestAddress.class, TestPerson.class, TestCompany.class
+        TestAddress.class, TestPerson.class, TestCompany.class, TestPaymentService.class
 })
 
 public class TestSuite {
 }
-
-// Test

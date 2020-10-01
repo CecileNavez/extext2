@@ -3,6 +3,7 @@ package be.abis.exa1.ut;
 import be.abis.exa1.exception.SalaryTooLowException;
 import be.abis.exa1.model.Person;
 import be.abis.exa1.service.AbisPaymentService;
+import be.abis.exa1.service.PaymentService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
@@ -21,7 +22,7 @@ public class TestPaymentService {
     public void netSalaryOfThePersonShouldBeOver1500() throws SalaryTooLowException {
         mockedPerson.setFirstName("Cecile");
         mockedPerson.setGrossSalary(2000.0);
-        AbisPaymentService myPay = new AbisPaymentService();
+        PaymentService myPay = new AbisPaymentService();
         when(mockedPerson.calculateNetSalary()).thenThrow(new SalaryTooLowException());
         myPay.paySalary(mockedPerson);
         }

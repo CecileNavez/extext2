@@ -5,6 +5,7 @@ import be.abis.exa1.model.Address;
 import be.abis.exa1.model.Company;
 import be.abis.exa1.model.Person;
 import be.abis.exa1.service.AbisPaymentService;
+import be.abis.exa1.service.PaymentService;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
@@ -25,7 +26,7 @@ public class ExB8 {
         Person p3 = new Person(3,"Nathan","Dupont",LocalDate.of(2000,5,16));
         Person p4 = new Person(3,"Lucie","Dupont",LocalDate.of(2000,6,27));
 
-        AbisPaymentService myPay = new AbisPaymentService();
+        PaymentService myPay = new AbisPaymentService();
 
 
         try (BufferedWriter bw = Files.newBufferedWriter(Paths.get("personinfo.txt"))) {
